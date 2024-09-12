@@ -7,7 +7,7 @@ const errorHandler = require('./middleware/errorHandler');
 const db = require('./db');
 
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
 // JSON verilerini işlemesi için Express'e built-in middleware ekliyoruz
 app.use(bodyParser.json());

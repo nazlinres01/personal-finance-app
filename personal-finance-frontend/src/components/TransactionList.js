@@ -1,27 +1,26 @@
 // src/components/TransactionList.js
 import React from 'react';
-import { deleteTransaction } from '../services/api';
 
-const TransactionList = ({ transactions, onUpdate }) => {
-  const handleDelete = async (id) => {
-    try {
-      await deleteTransaction(id);
-      onUpdate();
-    } catch (err) {
-      console.error('Failed to delete transaction', err);
-    }
-  };
-
-  return (
-    <ul>
+const TransactionList = ({ transactions, onUpdate }) => (
+  <div>
+    <h2 className="text-2xl font-semibold text-gray-800 mb-4">Transaction List</h2>
+    <ul className="space-y-4">
       {transactions.map((transaction) => (
-        <li key={transaction._id}>
-          {transaction.type}: {transaction.category} - ${transaction.amount}
-          <button onClick={() => handleDelete(transaction._id)}>Delete</button>
+        <li key={transaction._id} className="bg-white p-4 shadow-md rounded-lg">
+          <div className="flex justify-between items-center">
+            <span className="text-gray-800 font-medium">{transaction.description}</span>
+            <span className="text-gray-600">${transaction.amount}</span>
+          </div>
+          <button
+            onClick={() => onUpdate(transaction._id)}
+            className="mt-2 text-blue-500 hover:text-blue-600 transition duration-300"
+          >
+            Edit
+          </button>
         </li>
       ))}
     </ul>
-  );
-};
+  </div>
+);
 
 export default TransactionList;

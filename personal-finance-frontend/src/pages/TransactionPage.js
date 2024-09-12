@@ -21,10 +21,14 @@ const TransactionPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Transactions</h1>
-      <TransactionForm onAdd={fetchTransactions} />
-      <TransactionList transactions={transactions} onUpdate={fetchTransactions} />
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="container mx-auto bg-white shadow-lg rounded-lg p-8 max-w-4xl">
+        <h1 className="text-4xl font-bold text-gray-900 mb-6">Transactions</h1>
+        <TransactionForm onAdd={fetchTransactions} />
+        <div className="mt-8">
+          <TransactionList transactions={transactions} onUpdate={fetchTransactions} />
+        </div>
+      </div>
     </div>
   );
 };
