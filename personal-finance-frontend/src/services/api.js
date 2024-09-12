@@ -1,7 +1,6 @@
-// src/services/api.js
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api/transactions';
+const API_URL = '/api/transactions'; // Proxy kullanarak backend'e istek yönlendiriliyor
 
 export const getTransactions = () => axios.get(API_URL);
 export const addTransaction = (transaction) => axios.post(API_URL, transaction);
